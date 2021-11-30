@@ -8,6 +8,7 @@ string shift_left_once(string key_chunk){
 } 
 string shift_left_twice(string key_chunk){ 
     return key_chunk.substr(2,key_chunk.length())+key_chunk.substr(0,2); 
+   
 }
 void generate_keys(string key){
 	int pc1[56] = {
@@ -30,14 +31,9 @@ void generate_keys(string key){
 	44,49,39,56,34,53, 
 	46,42,50,36,29,32 
 	}; 
-	string key1="";
-	for(int i=0;i<56;i++)
-	{
-	key1 +=key[pc1[i]-1];
-	}
 	string perm_key =""; 
 	for(int i = 0; i < 56; i++){ 
-		perm_key+= key1[pc1[i]-1]; 
+		perm_key+= key[pc1[i]-1]; 
 	} 
 	string left= perm_key.substr(0, 28); 
 	string right= perm_key.substr(28, 28); 
@@ -66,4 +62,4 @@ int main(){
 	string key = bitset<64> (hexkey).to_string();
   	generate_keys(key);
   	return 0;
-}                                                                                               
+}                                                 
